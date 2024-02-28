@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './core/layout/header/header.component';
 import { filter, take } from 'rxjs';
-import { AuthService } from './core/services/auth.service';
+import { AuthService } from './features/auth/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { WeatherService } from './features/trip/services/weather.service';
 import { TripService } from './features/trip/services/trip.service';

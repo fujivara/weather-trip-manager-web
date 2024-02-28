@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../features/auth/services/auth.service';
 import { NgIf } from '@angular/common';
-import { UserModel } from '../../models/user.model';
+import { UserModel } from '../../../features/auth/models/user.model';
 
 @Component({
   selector: 'app-header',
