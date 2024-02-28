@@ -7,6 +7,7 @@ import { AuthService } from './features/auth/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { WeatherService } from './features/trip/services/weather.service';
 import { TripService } from './features/trip/services/trip.service';
+import { CityService } from './features/trip/services/city.service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ import { TripService } from './features/trip/services/trip.service';
     HttpClientModule,
     HeaderComponent,
   ],
-  providers: [AuthService, WeatherService, TripService],
+  providers: [AuthService, WeatherService, TripService, CityService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

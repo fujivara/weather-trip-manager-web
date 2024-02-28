@@ -34,8 +34,8 @@ export class TripCardComponent implements OnInit {
 
   onTripCardClick () {
     if (this.trip) {
-      this.weatherService.getWeatherList(this.trip.city, this.trip.startDate, this.trip.endDate);
-      this.weatherService.getTodayWeather(this.trip.city, this.trip.startDate);
+      this.weatherService.getWeatherList(this.trip.cityName, this.trip.startDate, this.trip.endDate);
+      this.weatherService.getTodayWeather(this.trip.cityName, this.trip.startDate);
       this.tripService.tripSelected.next(this.trip);
     }
   }

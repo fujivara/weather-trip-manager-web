@@ -9,7 +9,7 @@
          placeholder="Please select city"
          formControlName="city"
          [ngStyle]="{
-         'border': (editTripForm.controls.city.touched && !editTripForm.controls.city.valid) ? 'solid red' : ''
+         'border': (editTripForm.controls['city'].touched && !editTripForm.controls['city'].valid) ? 'solid red' : ''
          }">
   <datalist id="cityname">
     <option *ngFor="let city of cities">{{city.name}}</option>
@@ -20,7 +20,7 @@
          type="date"
          formControlName="startDate"
          [ngStyle]="{
-         'border': (editTripForm.controls.startDate.touched && !editTripForm.controls.startDate.valid) ? 'solid red' : ''
+         'border': (editTripForm.controls['startDate'].touched && !editTripForm.controls['startDate'].valid) ? 'solid red' : ''
          }">
 
   <label for="end-date"><span style="color: red">*</span> End date</label>
@@ -28,7 +28,7 @@
          type="date"
          formControlName="endDate"
          [ngStyle]="{
-         'border': (editTripForm.controls.endDate.touched && !editTripForm.controls.endDate.valid) ? 'solid red' : ''
+         'border': (editTripForm.controls['endDate'].touched && !editTripForm.controls['endDate'].valid) ? 'solid red' : ''
          }">
 
   <div class="trip-edit__footer">

@@ -1,7 +1,7 @@
 export interface TripModel {
   id?: string;
-  city: string;
-  image: string;
+  cityName: string;
+  image?: string;
   startDate: string;
   endDate: string;
 }
