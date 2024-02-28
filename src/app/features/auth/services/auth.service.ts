@@ -6,6 +6,7 @@ import { UserModel } from '../models/user.model';
 @Injectable()
 export class AuthService {
   user = new Subject<UserModel>();
+  isLoggedIn = false;
 
   constructor (
     private httpClient: HttpClient,

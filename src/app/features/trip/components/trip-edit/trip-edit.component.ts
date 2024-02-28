@@ -33,8 +33,6 @@ export class TripEditComponent implements OnInit {
     startDate: new FormControl('', [Validators.required]),
     endDate: new FormControl('', [Validators.required]),
   });
-  defaultCityImage =
-    'https://www.backwoodshome.com/bhm/wp-content/uploads/2015/12/architecture-buildings-city-373893.jpg';
 
   constructor (
     private tripService: TripService,
@@ -50,8 +48,6 @@ export class TripEditComponent implements OnInit {
         this.arrayValidator(this.cities ? this.cities.map((city) => city.name) : []),
       ]));
     });
-
-
   }
 
   onCancel () {

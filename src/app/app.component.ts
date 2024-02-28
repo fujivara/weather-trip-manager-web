@@ -50,6 +50,8 @@ export class AppComponent implements OnInit {
       if (event.type === 1) {
         this.authService.login().subscribe((user) => {
           this.authService.user.next(user);
+          this.authService.isLoggedIn = true;
+
         }, (error) => {
           console.error(error);
           localStorage.removeItem('token');

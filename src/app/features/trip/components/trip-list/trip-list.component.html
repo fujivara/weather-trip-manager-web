@@ -1,7 +1,8 @@
 <div class="trip-list">
   <input class="trip-list__search"
          placeholder="Search your trip"
-         (input)="onSearch($event)">
+         (input)="onSearch($event)"
+         [disabled]="isError">
   <label for="sort">Sort by start date: </label>
   <select id="sort" (change)="onSort($event)">
     <option>ascending</option>
@@ -22,5 +23,10 @@
         <h1>Add trip</h1>
       </div>
     </div>
+  </div>
+</div>
+<div class="overlay" *ngIf="isError">
+  <div class="position-box">
+    <error-modal [error]="error" (onModalClose)="handleCloseModal()"></error-modal>
   </div>
 </div>

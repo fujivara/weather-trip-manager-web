@@ -6,6 +6,7 @@ import { TripService } from '../../services/trip.service';
 import { NgIf } from '@angular/common';
 import { WeatherListComponent } from '../../components/weather-list/weather-list.component';
 import { WeatherCardComponent } from '../../components/weather-card/weather-card.component';
+import { ErrorModalComponent } from '../../../../core/layout/error-modal/error-modal.component';
 
 
 @Component({
@@ -19,6 +20,7 @@ import { WeatherCardComponent } from '../../components/weather-card/weather-card
     NgIf,
     WeatherListComponent,
     WeatherCardComponent,
+    ErrorModalComponent,
   ],
 })
 export class TripComponent implements OnInit {
