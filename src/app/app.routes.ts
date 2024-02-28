@@ -11,4 +11,5 @@ export const routes: Routes = [
     path: 'trips',
     component: TripComponent,
   },
+
 ];

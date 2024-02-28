@@ -1,7 +1,7 @@
 <div class="header">
   <h1 class="trip-section__heading">Weather <span>Forecast</span></h1>
 
-  <div  class="header__btn--login">
+  <div  class="header__btn--login" *ngIf="!isLoggedIn">
     <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="google logo">
     <a *ngIf="!isLoggedIn" href="http://127.0.0.1:4455/auth/signInWithGoogle">Login</a>
   </div>

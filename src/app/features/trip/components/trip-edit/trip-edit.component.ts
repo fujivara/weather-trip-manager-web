@@ -57,18 +57,19 @@ export class TripEditComponent {
     console.log(startDate.value);
     if (city.value && startDate.value && endDate.value) {
       if (!this.weatherService.validateTripDates(startDate.value, endDate.value)) {
-        console.log('idi');
         startDate.setErrors({ 'invalid': true });
         endDate.setErrors({ 'invalid': true });
         return;
       }
-      // this.weatherService.getWeatherList(city.value, startDate.value, endDate.value);
-      this.tripService.newTrip.next({
-        place: city.value,
+      this.tripService.create({
+        city: city.value,
         startDate: startDate.value,
         endDate: endDate.value,
         image: 'https://www.berlin.de/binaries/asset/image_assets/6243462/ratio_4_3/1685015072/800x600/',
+      }).subscribe((trip) => {
+        this.tripService.newTrip.next(trip);
       });
+
     }
   }
 }

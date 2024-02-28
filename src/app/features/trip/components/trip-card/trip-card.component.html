@@ -1,7 +1,7 @@
 <div class="trip-card" (click)="onTripCardClick()">
-  <img [src]="trip?.image"/>
+  <img [src]="trip?.image" alt="city"/>
   <div class="trip-card__details">
-    <h2>{{trip?.place}}</h2>
-    <p>{{trip?.startDate + ' - ' + trip?.endDate}}</p>
+    <h2>{{trip?.city}}</h2>
+    <p>{{transformDate(trip?.startDate) + ' - ' + transformDate(trip?.endDate)}}</p>
   </div>
 </div>

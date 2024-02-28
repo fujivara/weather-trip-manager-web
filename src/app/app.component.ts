@@ -6,6 +6,7 @@ import { filter, take } from 'rxjs';
 import { AuthService } from './core/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { WeatherService } from './features/trip/services/weather.service';
+import { TripService } from './features/trip/services/trip.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ import { WeatherService } from './features/trip/services/weather.service';
     HttpClientModule,
     HeaderComponent,
   ],
-  providers: [AuthService, WeatherService],
+  providers: [AuthService, WeatherService, TripService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -45,13 +46,13 @@ export class AppComponent implements OnInit {
     });
 
     this.router.events.subscribe((event) => {
-      if (event.type === 1 && event.url === '/') {
-        // this.authService.login().subscribe((user) => {
-        //   this.authService.user.next(user);
-        // }, (error) => {
-        //   console.error(error);
-        //   localStorage.removeItem('token');
-        // });
+      if (event.type === 1 && event.url === '/trips') {
+        this.authService.login().subscribe((user) => {
+          this.authService.user.next(user);
+        }, (error) => {
+          console.error(error);
+          localStorage.removeItem('token');
+        });
       }
     });
   }

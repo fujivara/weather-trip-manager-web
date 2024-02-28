@@ -1,6 +1,18 @@
 .trip-list {
   margin-top: 3rem;
   position: relative;
+
+  & label {
+    margin-left: 3rem;
+    font-size: 2rem;
+  }
+
+  & select {
+    font-size: 2rem;
+    border: none;
+    background-color: rgba(242, 244, 248);
+    padding: 0.5rem;
+  }
 }
 
 .trip-list__search,

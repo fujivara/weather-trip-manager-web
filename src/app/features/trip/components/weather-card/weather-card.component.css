@@ -1,15 +1,4 @@
-.weather-section {
-  background-color: rgba(17, 14, 59);
-  width: 30%;
-  height: 100%;
-  position: fixed;
-  left: 70%;
-  top: 0;
-  bottom: 0;
-  color: white;
-}
-
-.weather-section__box {
+.weather-card {
   position: absolute;
   top: 50%;
   left: 50%;

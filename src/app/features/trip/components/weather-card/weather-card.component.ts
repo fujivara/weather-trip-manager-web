@@ -34,6 +34,12 @@ export class WeatherCardComponent implements OnInit, OnDestroy {
         tempCurr: Number.parseInt(currDay.temp),
       };
 
+      this.timerMinutes = '00';
+      this.timerDays = '00';
+      this.timerHours = '00';
+      this.timerSeconds = '00';
+
+      this.stopTimer();
       this.targetDate = new Date(data.startDate);
       this.startTimer();
     });
@@ -73,9 +79,9 @@ export class WeatherCardComponent implements OnInit, OnDestroy {
       const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
       const days = Math.floor(difference / (1000 * 60 * 60 * 24));
 
-      this.timerMinutes = this.formatTwoDigits(days);
-      this.timerDays = this.formatTwoDigits(hours);
-      this.timerHours = this.formatTwoDigits(minutes);
+      this.timerMinutes = this.formatTwoDigits(minutes);
+      this.timerDays = this.formatTwoDigits(days);
+      this.timerHours = this.formatTwoDigits(hours);
       this.timerSeconds = this.formatTwoDigits(seconds);
     }
   }

@@ -1,10 +1,17 @@
 <div class="trip-list">
-  <input class="trip-list__search" placeholder="Search your trip">
+  <input class="trip-list__search"
+         placeholder="Search your trip"
+         (input)="onSearch($event)">
+  <label for="sort">Sort by start date: </label>
+  <select id="sort" (change)="onSort($event)">
+    <option>ascending</option>
+    <option>descending</option>
+  </select>
   <div class="list-area">
     <div class="list-container">
       <ul>
         <trip-card
-          *ngFor="let trip of trips"
+          *ngFor="let trip of trips;"
           [trip]="trip"
         ></trip-card>
       </ul>
