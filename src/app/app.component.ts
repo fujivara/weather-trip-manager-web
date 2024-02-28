@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
     });
 
     this.router.events.subscribe((event) => {
-      if (event.type === 1 && (event.url === '/' || event.url === '/trips')) {
+      if (event.type === 1) {
         this.authService.login().subscribe((user) => {
           this.authService.user.next(user);
         }, (error) => {

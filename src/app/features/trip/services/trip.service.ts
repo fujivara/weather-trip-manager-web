@@ -7,6 +7,7 @@ import { OrderEnum } from '../../../core/enums/order.enum';
 @Injectable()
 export class TripService {
   tripEditing = new Subject<boolean>();
+  tripSelected = new Subject<TripModel>();
   newTrip = new Subject<TripModel>();
 
   constructor (private http: HttpClient) {}

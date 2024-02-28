@@ -25,6 +25,7 @@ export class TripListComponent implements OnInit {
 
   trips: TripModel[] = [
     {
+      id: 'unique-super-cool-id',
       city: 'Berlin',
       image: 'https://www.berlin.de/binaries/asset/image_assets/6243462/ratio_4_3/1685015072/800x600/',
       startDate: '2024-02-29',

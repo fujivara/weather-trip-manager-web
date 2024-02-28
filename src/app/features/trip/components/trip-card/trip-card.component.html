@@ -1,6 +1,6 @@
 <div class="trip-card" (click)="onTripCardClick()">
   <img [src]="trip?.image" alt="city"/>
-  <div class="trip-card__details">
+  <div class="trip-card__details" [ngStyle]="{'border': isSelected ? 'solid deepskyblue' : ''}">
     <h2>{{trip?.city}}</h2>
     <p>{{transformDate(trip?.startDate) + ' - ' + transformDate(trip?.endDate)}}</p>
   </div>
