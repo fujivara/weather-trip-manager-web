@@ -1,0 +1,40 @@
+.header {
+  width: 70%;
+  height: 8rem;
+  position: fixed;
+  z-index: 100;
+  display: flex;
+}
+
+.header__btn--login {
+  width: 8rem;
+  margin: auto 2rem auto auto;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: gainsboro;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  & img {
+    width: 3rem;
+  }
+
+  & a {
+    font-size: 2rem;
+    text-decoration: none;
+    color: black;
+  }
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 100;
+  margin: auto auto auto 2rem;
+}
+
+span {
+  font-weight: 600;
+}

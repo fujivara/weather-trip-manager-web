@@ -1,0 +1,38 @@
+<form class="trip-edit" [formGroup]="editTripForm" (ngSubmit)="onSubmit()">
+  <div class="trip-edit__header">
+    <h1>Create trip</h1>
+  </div>
+  <label for="city"><span style="color: red">*</span> City</label>
+  <input type="text"
+         id="city"
+         list="cityname"
+         placeholder="Please select city"
+         formControlName="city"
+         [ngStyle]="{
+         'border': (editTripForm.controls.city.touched && !editTripForm.controls.city.valid) ? 'solid red' : ''
+         }">
+  <datalist id="cityname">
+    <option *ngFor="let city of cities">{{city.name}}</option>
+  </datalist>
+
+  <label for="start-date"><span style="color: red">*</span> Start date</label>
+  <input id="start-date"
+         type="date"
+         formControlName="startDate"
+         [ngStyle]="{
+         'border': (editTripForm.controls.startDate.touched && !editTripForm.controls.startDate.valid) ? 'solid red' : ''
+         }">
+
+  <label for="end-date"><span style="color: red">*</span> End date</label>
+  <input id="end-date"
+         type="date"
+         formControlName="endDate"
+         [ngStyle]="{
+         'border': (editTripForm.controls.endDate.touched && !editTripForm.controls.endDate.valid) ? 'solid red' : ''
+         }">
+
+  <div class="trip-edit__footer">
+    <button (click)="onCancel()">Cancel</button>
+    <button type="submit" [disabled]="!editTripForm.valid">Save</button>
+  </div>
+</form>

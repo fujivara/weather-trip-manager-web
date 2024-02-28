@@ -1,0 +1,35 @@
+.trip-card {
+  width: 20rem;
+  display: inline-block;
+  margin-right: 4rem;
+}
+
+.trip-card:hover {
+  .trip-card__details {
+    border: solid deepskyblue;
+  }
+}
+
+.trip-card__details {
+  padding: 1.5rem;
+  color: dimgray;
+  border: 0.3rem solid transparent;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px 0, rgba(0, 0, 0, 0.08) 0 0 0 1px;
+  transform: translateY(-0.2rem);
+}
+
+img {
+  height: 15rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+p {
+  color: darkgrey;
+  font-size: 1.2rem;
+}

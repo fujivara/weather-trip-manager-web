@@ -1,0 +1,28 @@
+<section class="weather-section">
+      <div class="weather-section__box" *ngIf="weather">
+        <h1>{{weather?.day}}</h1>
+        <div class="weather-stat">
+          <img src="{{weather?.image}}" alt="weather">
+          <h2>{{weather?.tempCurr}}<span>&deg;C</span></h2>
+        </div>
+        <h3>{{weather?.city}}</h3>
+        <div class="timer">
+          <div class="timer__days">
+            <h1>{{timerDays}}</h1>
+            <h2>DAYS</h2>
+          </div>
+          <div class="timer__hours">
+            <h1>{{timerHours}}</h1>
+            <h2>HOURS</h2>
+          </div>
+          <div class="timer__minutes">
+            <h1>{{timerMinutes}}</h1>
+            <h2>MINUTES</h2>
+          </div>
+          <div class="timer__seconds">
+            <h1>{{timerSeconds}}</h1>
+            <h2>SECONDS</h2>
+          </div>
+        </div>
+      </div>
+</section>

@@ -1,0 +1,12 @@
+<div class="weather-list" *ngIf="weathers">
+    <h2>Week</h2>
+    <div class="weather-list__container">
+      <ul>
+        <li *ngFor="let weather of weathers">
+          <h3>{{weather.day}}</h3>
+          <img [src]="weather.image" alt="weather">
+          <p>{{weather.tempMin}}&deg;/{{weather.tempMax}}&deg;</p>
+        </li>
+      </ul>
+    </div>
+</div>

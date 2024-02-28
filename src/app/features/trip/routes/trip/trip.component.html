@@ -1,0 +1,14 @@
+<div class="flow-column">
+  <section class="trip-section">
+    <trip-list></trip-list>
+    <div class="overlay" *ngIf="isEditing">
+      <div class="position-box">
+        <trip-edit></trip-edit>
+      </div>
+    </div>
+    <weather-list></weather-list>
+  </section>
+  <weather-card></weather-card>
+
+</div>
+

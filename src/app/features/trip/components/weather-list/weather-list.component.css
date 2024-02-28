@@ -1,0 +1,48 @@
+.weather-list {
+  margin-top: 3rem;
+}
+
+h2 {
+  color: rgba(17, 14, 59);
+  font-size: 2rem;
+}
+
+.weather-list__container {
+  margin-top: 1rem;
+  width: 54vw;
+  height: 20rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  display: inline-flex;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+  white-space: nowrap;
+}
+
+li {
+  width: 15rem;
+  color: rgba(17, 14, 59);
+  display: inline-grid;
+  gap: 2.3rem;
+
+  & h3 {
+    font-size: 1.6rem;
+    font-weight: 100;
+    margin: 0 auto;
+  }
+
+  & img {
+    height: 7rem;
+    width: 8rem;
+    margin: 0 auto;
+  }
+
+  & p {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0 auto;
+  }
+}
