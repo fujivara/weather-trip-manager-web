@@ -20,7 +20,6 @@ import { CityService } from './features/trip/services/city.service';
   ],
   providers: [AuthService, WeatherService, TripService, CityService],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit, OnDestroy {
   paramsSub = new Subscription();
