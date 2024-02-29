@@ -1,22 +1,5 @@
-.trip-list {
-  margin-top: 3rem;
-  position: relative;
-
-  & label {
-    margin-left: 3rem;
-    font-size: 2rem;
-  }
-
-  & select {
-    font-size: 2rem;
-    border: none;
-    background-color: rgba(242, 244, 248);
-    padding: 0.5rem;
-  }
-}
-
 .trip-list__search,
-trip-list__search:focus {
+.trip-list__search:focus {
   border: none;
   background-color: rgba(242, 244, 248);
   font-weight: 500;
@@ -27,10 +10,8 @@ trip-list__search:focus {
   margin-bottom: 3rem;
 }
 
-ul {
-  list-style: none;
-  white-space: nowrap;
-  margin-left: 1rem;
+.add-trip-btn h1:last-child {
+  font-size: 1.5rem;
 }
 
 .list-container {
@@ -43,39 +24,6 @@ ul {
   align-items: center;
 }
 
-.add-trip-btn {
-  width: 15rem;
-  height: 15rem;
-  background-color: rgba(242, 244, 248);
-  font-size: 1.9rem;
-  text-align: center;
-  position: relative;
-  cursor: pointer;
-}
-
-.add-trip-btn h1:last-child {
-  font-size: 1.5rem;
-}
-
-.add-trip-btn__content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.list-area {
-  display: flex;
-  gap: 4rem;
-}
-
-.position-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .overlay {
   position: fixed;
   display: block;
@@ -85,6 +33,6 @@ ul {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
 }
