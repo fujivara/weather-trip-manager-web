@@ -1,5 +1,5 @@
 .trip-card {
-  width: 20rem;
+  width: 17rem;
   display: inline-block;
   margin-right: 4rem;
 }
@@ -19,7 +19,7 @@
 }
 
 img {
-  height: 15rem;
+  height: 14rem;
   width: 100%;
   object-fit: cover;
 }

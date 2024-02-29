@@ -9,7 +9,8 @@
     <option>descending</option>
   </select>
   <div class="list-area">
-    <div class="list-container">
+    <button (click)="scrollList(-90)">&#8249;</button>
+    <div class="list-container"  #horizontalList>
       <ul>
         <trip-card
           *ngFor="let trip of trips;"
@@ -17,6 +18,7 @@
         ></trip-card>
       </ul>
     </div>
+    <button (click)="scrollList(90)">&#8250;</button>
     <div class="add-trip-btn"  (click)="onAddTrip()">
       <div class="add-trip-btn__content">
         <h1>+</h1>

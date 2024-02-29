@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { TripModel } from '../../models/trip.model';
 import { TripCardComponent } from '../trip-card/trip-card.component';
 import { NgForOf, NgIf } from '@angular/common';
@@ -23,6 +23,9 @@ import { Subscription } from 'rxjs';
   ],
 })
 export class TripListComponent implements OnInit, OnDestroy {
+  @ViewChild('horizontalList')
+    horizontalList?: ElementRef<HTMLUListElement>;
+
   search = '';
   sortOrder = OrderEnum.ASC;
   isError = false;
@@ -101,5 +104,14 @@ export class TripListComponent implements OnInit, OnDestroy {
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const day = date.getDate().toString().padStart(2, '0');
     return `${year}-${month}-${day}`;
+  }
+
+  scrollList (amount: number) {
+    if (this.horizontalList) {
+      this.horizontalList.nativeElement.scrollBy({
+        left: amount,
+        behavior: 'smooth',
+      });
+    }
   }
 }
