@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { WeatherService } from './features/trip/services/weather.service';
 import { TripService } from './features/trip/services/trip.service';
 import { CityService } from './features/trip/services/city.service';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',

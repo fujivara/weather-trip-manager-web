@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class WeatherService {
@@ -10,19 +11,20 @@ export class WeatherService {
   constructor (private http: HttpClient) {}
 
   getWeatherList (city: string, startDate: string, endDate: string) {
-    const url =
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/${startDate}/${endDate}?key=GX5QAJL54A3DX43D4V67Q5RNH`;
-
-    this.http.get(url).subscribe((weather) => {
+    const path = 'VisualCrossingWebServices/rest/services/timeline';
+    this.http.get(`
+      ${environment.WEATHER_API_BASE_URL}/${path}/${city}/${startDate}/${endDate}?key=${environment.WEATHER_API_KEY}
+    `).subscribe((weather) => {
       this.weatherList.next(weather);
     });
   }
 
   getTodayWeather (city: string, startDate: string) {
-    const url =
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/today?unitGroup=metric&include=days&key=GX5QAJL54A3DX43D4V67Q5RNH&contentType=json`;
-
-    this.http.get(url).subscribe((weather) => {
+    const path = 'VisualCrossingWebServices/rest/services/timeline';
+    const params = 'unitGroup=metric&include=days';
+    this.http.get(`
+      ${environment.WEATHER_API_BASE_URL}/${path}/${city}/today?${params}&key=${environment.WEATHER_API_KEY}
+    `).subscribe((weather) => {
       this.todayWeather.next({ weather, city, startDate });
     });
   }

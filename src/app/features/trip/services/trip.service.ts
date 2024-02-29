@@ -3,6 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { TripModel } from '../models/trip.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { OrderEnum } from '../../../core/enums/order.enum';
+import { environment } from '../../../../environments/environment';
 
 @Injectable()
 export class TripService {
@@ -18,7 +19,7 @@ export class TripService {
       'Authorization': `Bearer ${token}`,
     });
 
-    return this.http.post('http://localhost:4455/trips',
+    return this.http.post(`${environment.API_BASE_URL}/trips`,
       { ...trip }, { headers }) as Observable<TripModel>;
   }
 
@@ -38,6 +39,6 @@ export class TripService {
       params = params.append('order', order === OrderEnum.ASC ? 'asc' : 'desc');
     }
 
-    return this.http.get('http://localhost:4455/trips', { params, headers }) as Observable<TripModel[]>;
+    return this.http.get(`${environment.API_BASE_URL}/trips`, { params, headers }) as Observable<TripModel[]>;
   }
 }
