@@ -35,15 +35,7 @@ export class TripListComponent implements OnInit, OnDestroy {
     private router: Router,
   ) {}
 
-  trips: TripModel[] = [
-    {
-      id: 'unique-super-cool-id',
-      cityName: 'Berlin',
-      image: 'https://www.berlin.de/binaries/asset/image_assets/6243462/ratio_4_3/1685015072/800x600/',
-      startDate: '2024-02-29',
-      endDate: '2024-02-30',
-    },
-  ];
+  trips: TripModel[] = [];
 
   ngOnInit (): void {
     this.newTripSub = this.tripService.newTrip.subscribe((trip) => {
@@ -52,8 +44,15 @@ export class TripListComponent implements OnInit, OnDestroy {
     this.tripService.getAll('', this.sortOrder).subscribe((trips) => {
       this.trips = trips;
     });
-  }
 
+    this.trips.push({
+      id: 'unique-super-cool-id',
+      cityName: 'Berlin',
+      image: 'https://www.berlin.de/binaries/asset/image_assets/6243462/ratio_4_3/1685015072/800x600/',
+      startDate: this.getFormattedDate(new Date(Date.now())),
+      endDate: this.getFormattedDate(new Date(new Date().setDate(new Date().getDate() + 2))),
+    });
+  }
 
   ngOnDestroy (): void {
     this.newTripSub.unsubscribe();
@@ -95,5 +94,12 @@ export class TripListComponent implements OnInit, OnDestroy {
   handleCloseModal () {
     this.isError = false;
     this.error = '';
+  }
+
+  getFormattedDate (date: Date) {
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 }
