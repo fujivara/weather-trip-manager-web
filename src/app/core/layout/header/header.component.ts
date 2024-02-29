@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../features/auth/services/auth.service';
 import { NgIf } from '@angular/common';
 import { UserModel } from '../../../features/auth/models/user.model';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -22,4 +23,6 @@ export class HeaderComponent implements OnInit {
       this.user = user;
     });
   }
+
+  protected readonly environment = environment;
 }
