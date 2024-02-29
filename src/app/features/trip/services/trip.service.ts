@@ -7,7 +7,6 @@ import { environment } from '../../../../environments/environment';
 
 @Injectable()
 export class TripService {
-  tripEditing = new Subject<boolean>();
   tripSelected = new Subject<TripModel>();
   newTrip = new Subject<TripModel>();
 

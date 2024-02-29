@@ -3,6 +3,7 @@ import { WeatherModel } from '../../models/weather.model';
 import { NgIf } from '@angular/common';
 import { WeatherService } from '../../services/weather.service';
 import { DAYS_OF_WEEK } from '../../../../../utils/constants';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'weather-card',
@@ -21,11 +22,12 @@ export class WeatherCardComponent implements OnInit, OnDestroy {
   timerDays = '00';
   timerHours = '00';
   timerSeconds = '00';
+  todayWeatherSub = new Subscription();
 
   constructor (private weatherService: WeatherService) {}
 
   ngOnInit () {
-    this.weatherService.todayWeather.subscribe((data: any) => {
+    this.todayWeatherSub = this.weatherService.todayWeather.subscribe((data: any) => {
       const currDay = data.weather.days[0];
       this.weather = {
         day: DAYS_OF_WEEK[(new Date(currDay.datetime)).getDay()],
@@ -47,6 +49,7 @@ export class WeatherCardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy () {
     this.stopTimer();
+    this.todayWeatherSub.unsubscribe();
   }
 
   private startTimer () {

@@ -32,7 +32,7 @@
          }">
 
   <div class="trip-edit__footer">
-    <button (click)="onCancel()">Cancel</button>
+    <button routerLink="/trips">Cancel</button>
     <button type="submit" [disabled]="!editTripForm.valid">Save</button>
   </div>
 </form>

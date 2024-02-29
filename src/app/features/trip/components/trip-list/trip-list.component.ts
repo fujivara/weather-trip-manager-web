@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TripModel } from '../../models/trip.model';
 import { TripCardComponent } from '../trip-card/trip-card.component';
 import { NgForOf, NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { TripService } from '../../services/trip.service';
 import { OrderEnum } from '../../../../core/enums/order.enum';
 import { ErrorModalComponent } from '../../../../core/layout/error-modal/error-modal.component';
 import { AuthService } from '../../../auth/services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'trip-list',
@@ -21,15 +22,17 @@ import { AuthService } from '../../../auth/services/auth.service';
     NgIf,
   ],
 })
-export class TripListComponent implements OnInit {
+export class TripListComponent implements OnInit, OnDestroy {
   search = '';
   sortOrder = OrderEnum.ASC;
   isError = false;
   error = '';
+  newTripSub = new Subscription();
 
   constructor (
     private tripService: TripService,
     private authService: AuthService,
+    private router: Router,
   ) {}
 
   trips: TripModel[] = [
@@ -43,7 +46,7 @@ export class TripListComponent implements OnInit {
   ];
 
   ngOnInit (): void {
-    this.tripService.newTrip.subscribe((trip) => {
+    this.newTripSub = this.tripService.newTrip.subscribe((trip) => {
       this.trips.push(trip);
     });
     this.tripService.getAll('', this.sortOrder).subscribe((trips) => {
@@ -51,12 +54,17 @@ export class TripListComponent implements OnInit {
     });
   }
 
+
+  ngOnDestroy (): void {
+    this.newTripSub.unsubscribe();
+  }
+
   onAddTrip () {
     if (!this.authService.isLoggedIn) {
       this.isError = true;
       this.error = 'Login before start';
     } else {
-      this.tripService.tripEditing.next(true);
+      this.router.navigate(['/trips/edit']);
     }
   }
 
@@ -88,5 +96,4 @@ export class TripListComponent implements OnInit {
     this.isError = false;
     this.error = '';
   }
-
 }

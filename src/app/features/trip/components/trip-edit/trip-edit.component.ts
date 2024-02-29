@@ -13,6 +13,7 @@ import { NgForOf, NgStyle } from '@angular/common';
 import { WeatherService } from '../../services/weather.service';
 import { CityService } from '../../services/city.service';
 import { CityModel } from '../../models/city.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'trip-edit',
@@ -24,6 +25,7 @@ import { CityModel } from '../../models/city.model';
     NgForOf,
     ReactiveFormsModule,
     NgStyle,
+    RouterLink,
   ],
 })
 export class TripEditComponent implements OnInit {
@@ -48,10 +50,6 @@ export class TripEditComponent implements OnInit {
         this.arrayValidator(this.cities ? this.cities.map((city) => city.name) : []),
       ]));
     });
-  }
-
-  onCancel () {
-    this.tripService.tripEditing.next(false);
   }
 
   onSubmit () {

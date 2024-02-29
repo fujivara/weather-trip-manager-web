@@ -11,6 +11,7 @@ export class ErrorModalComponent {
     error: string = 'Something went wrong!';
 
   @Output()
+    // eslint-disable-next-line @angular-eslint/no-output-on-prefix
     onModalClose = new EventEmitter<boolean>();
 
   onClose () {

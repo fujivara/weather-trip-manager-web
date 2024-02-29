@@ -37,7 +37,10 @@ export class WeatherService {
     const fifteenDaysFromNow = new Date(today);
     fifteenDaysFromNow.setDate(today.getDate() + 15);
 
-    if (startDateObj < today || endDateObj < today || startDateObj >= fifteenDaysFromNow || endDateObj > fifteenDaysFromNow) {
+    if (
+      startDateObj < today || endDateObj < today ||
+      startDateObj >= fifteenDaysFromNow || endDateObj > fifteenDaysFromNow
+    ) {
       return false;
     }
 

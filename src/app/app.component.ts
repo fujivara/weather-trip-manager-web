@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './core/layout/header/header.component';
-import { filter, take } from 'rxjs';
+import { filter, Subscription, take } from 'rxjs';
 import { AuthService } from './features/auth/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { WeatherService } from './features/trip/services/weather.service';
 import { TripService } from './features/trip/services/trip.service';
 import { CityService } from './features/trip/services/city.service';
-import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +22,10 @@ import { environment } from '../environments/environment';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
+  paramsSub = new Subscription();
+  routerEventsSub = new Subscription();
+
   constructor (
     private authService: AuthService,
     private router: Router,
@@ -31,7 +33,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit (): void {
-    this.route.queryParams.pipe(
+    this.paramsSub = this.route.queryParams.pipe(
       filter((params) => params['token']),
       take(1),
     ).subscribe((params) => {
@@ -47,7 +49,7 @@ export class AppComponent implements OnInit {
       });
     });
 
-    this.router.events.subscribe((event) => {
+    this.routerEventsSub = this.router.events.subscribe((event) => {
       if (event.type === 1) {
         this.authService.login().subscribe((user) => {
           this.authService.user.next(user);
@@ -59,5 +61,10 @@ export class AppComponent implements OnInit {
         });
       }
     });
+  }
+
+  ngOnDestroy (): void {
+    this.routerEventsSub.unsubscribe();
+    this.paramsSub.unsubscribe();
   }
 }

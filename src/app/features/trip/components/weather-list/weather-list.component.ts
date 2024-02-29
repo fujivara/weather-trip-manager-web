@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
 import { WeatherModel } from '../../models/weather.model';
 import { NgForOf, NgIf } from '@angular/common';
 import { TripCardComponent } from '../trip-card/trip-card.component';
 import { DAYS_OF_WEEK } from '../../../../../utils/constants';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'weather-list',
@@ -16,13 +17,14 @@ import { DAYS_OF_WEEK } from '../../../../../utils/constants';
     NgIf,
   ],
 })
-export class WeatherListComponent implements OnInit {
+export class WeatherListComponent implements OnInit, OnDestroy {
   weathers: WeatherModel[] | undefined;
+  weatherListSub = new Subscription();
 
   constructor (private weatherService: WeatherService) {}
 
   ngOnInit (): void {
-    this.weatherService.weatherList.subscribe((weatherList: any) => {
+    this.weatherListSub = this.weatherService.weatherList.subscribe((weatherList: any) => {
       this.weathers = weatherList.days.map((day: any) => ({
         day: DAYS_OF_WEEK[(new Date(day.datetime)).getDay()],
         image: `assets/weather/${day.icon}.svg`,
@@ -30,5 +32,9 @@ export class WeatherListComponent implements OnInit {
         tempMax: Number.parseInt(day.tempmax),
       }));
     });
+  }
+
+  ngOnDestroy (): void {
+    this.weatherListSub.unsubscribe();
   }
 }
