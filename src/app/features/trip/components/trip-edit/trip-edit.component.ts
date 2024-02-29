@@ -13,7 +13,7 @@ import { NgForOf, NgStyle } from '@angular/common';
 import { WeatherService } from '../../services/weather.service';
 import { CityService } from '../../services/city.service';
 import { CityModel } from '../../models/city.model';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'trip-edit',
@@ -40,6 +40,7 @@ export class TripEditComponent implements OnInit {
     private tripService: TripService,
     private weatherService: WeatherService,
     private cityService: CityService,
+    private router: Router,
   ) {}
 
   ngOnInit () {
@@ -72,6 +73,7 @@ export class TripEditComponent implements OnInit {
         this.tripService.newTrip.next(trip);
       });
 
+      this.router.navigate(['/trips']);
     }
   }
 
